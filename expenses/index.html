@@ -15,13 +15,12 @@
 		<ma-data v-model="expenses"
 			src="https://github.com/designftw/hw3-sabrinahu618/blob/master/expenses/data.json"></ma-data>
 
-		
 		<!-- App UI here -->
 		<div v-if="expenses.user">
 			Logged in as {{ expenses.user?.username }}
-			<button @click="expenses.logout()">Logout</button>
+			<button @click="expenses.logout();">Logout</button>
 		</div>
-		<button v-else @click="expenses.login()">Login</button>
+		<button v-else @click="expenses.login();">Login</button>
 
 		<div id="owes" v-if="total_balance < 0">
 			<h1> Trinity owes Neo: ${{ total_balance*-1 }} </h1>
@@ -29,9 +28,9 @@
 		<div id="owes" v-if="total_balance > 0">
 			<h1> Neo owes Trinity: ${{ total_balance }} </h1>
 		</div>
-		<h2>New Expense Input</h2>
+		<h2>Expense For Joint or Other Person</h2>
 		<section class="expenseInput">
-			<!-- <div><label>Date</label><input type="date" v-model="newExpense.date"/></div>
+			<div><label>Date</label><input type="date" v-model="newExpense.date"/></div>
 			<div><label>Title</label><input type="text" v-model="newExpense.title" /></div>
 			<div><label>Trinity Paid (Joint)</label><input type="number" v-model="newExpense.trinity_paid" /></div>
 			<div><label>Neo Paid (Joint)</label><input type="number" v-model="newExpense.neo_paid" /></div>
@@ -39,36 +38,20 @@
 			</div>
 			<div><label>Neo Paid for Trinity</label><input type="number" v-model="newExpense.neo_paid_for_trinity" />
 			</div>
-			<div><label>Trinity Paid for Herself</label><input type="number"  v-model="newExpense.trinity_paid_for_herself"/></div>
-			<div><label>Neo Paid for Himself</label><input type="number"  v-model="newExpense.neo_paid_for_himself" /></div> -->
-			<table>
-				<thead>
-					<tr>
-						<td>Date</td>
-						<td>Title</td>
-						<td>Trinity Paid</td>
-						<td>Neo Paid</td>
-						<td>Trinity Paid For Neo</td>
-						<td>Neo Paid For Trinity</td>
-						<td>Trinity Paid For Herself</td>
-						<td>Neo Paid For Himself</td>
-					</tr>
-				</thead>
-	
-				<tbody>
-						<td> <input type="date" v-model="newExpense.date" /> </td>
-						<td> <input type="text" v-model="newExpense.title" /> </td>
-						<td> <input type="number" v-model="newExpense.trinity_paid" /> </td>
-						<td> <input type="number" v-model="newExpense.neo_paid" /> </td>
-						<td> <input type="number" v-model="newExpense.trinity_paid_for_neo" /> </td>
-						<td> <input type="number" v-model="newExpense.neo_paid_for_trinity" /> </td>
-						<td> <input type="number" v-model="newExpense.trinity_paid_for_herself" /> </td>
-						<td> <input type="number" v-model="newExpense.neo_paid_for_himself" /> </td>
-						<td class="deleteButton"><button @click="deleteExpense(expense)">X</button></td>
-					</tr>
-				</tbody>
-			</table>
 		</section>
+
+		<h2>Expense For Self</h2>
+		<section class="personalInput">
+			<div><label>Trinity Paid for Herself</label><input type="number"  v-model="newExpense.trinity_paid_for_herself"/></div>
+			<div><label>Neo Paid for Himself</label><input type="number"  v-model="newExpense.neo_paid_for_himself" /></div>
+		</section>
+
+		<h2>Currency</h2>
+		<select id="currency">
+			<option value="USD" selected>USD</option>
+			<option value="EUR">EUR</option>
+			<option value="GBP">GBP</option>
+		</select>
 
 		
 		<div id="addsavebuttons">
@@ -81,8 +64,8 @@
 				<tr>
 					<td>Date</td>
 					<td>Title</td>
-					<td>Trinity Paid</td>
-					<td>Neo Paid</td>
+					<td>Trinity Paid (Joint)</td>
+					<td>Neo Paid (Joint)</td>
 					<td>Trinity Paid For Neo</td>
 					<td>Neo Paid For Trinity</td>
 					<td>Trinity Paid For Herself</td>
@@ -105,7 +88,7 @@
 			</tbody>
 		</table>
 
-		<button id="scroll" @click="window.scroll(0, 0)">Scroll to Top</button>
+		<button id="scroll" @click="window.scroll(0, 0)">Scroll Up</button>
 
 	</div>
 

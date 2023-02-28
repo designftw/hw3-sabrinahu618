@@ -1,14 +1,17 @@
 table {
     table-layout: fixed;
-    border-spacing:0;
-    margin-left:auto;
-    margin-right:auto;
     width: 100%;
+    border-spacing:0;
+    padding-left: 6em;
+    /* margin-left:auto;
+    margin-right:auto; */
 }
   
 td, th {
     border: 0.75px solid hsl(220 10% 80%);
     padding: .4em;
+    white-space:pre-wrap;
+    word-wrap:break-word;
 }
 
 thead {
@@ -19,6 +22,7 @@ thead {
 
 table input {
     border: none;
+    width: 100%;
 }
 
 summary {
@@ -47,7 +51,6 @@ details {
     align-items: center;
     background-color: hsl(216, 66%, 32%);
     color: hsl(0, 0%, 100%);
-    width:100%
 }
 
 /* .expenseInput label {
@@ -56,8 +59,8 @@ details {
 
 #scroll {
     position: fixed;
-    bottom: 1em;
-    right: 1em;
+    Bottom: 1em;
+    right: 2em;
 }
 
 .deleteButton {
@@ -102,4 +105,21 @@ button:hover {
 #addsavebuttons button {
     font-size: 14pt;
 }
+
+.personalInput {
+    display: flex;
+    justify-content: center;
+    gap: 0.7em;
+}
+
+.personalInput div {
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: hsl(216, 66%, 32%);
+    color: hsl(0, 0%, 100%);
+    width:100%
+}
+
 
