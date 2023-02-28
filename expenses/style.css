@@ -122,4 +122,13 @@ button:hover {
     width:100%
 }
 
+#app {
+    overflow: hidden;
+}
 
+#radio {
+    display: flex;
+    flex-direction: row;
+    font-size: 16pt;
+    gap: 0.1em;
+}

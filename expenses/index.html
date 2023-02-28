@@ -42,16 +42,20 @@
 
 		<h2>Expense For Self</h2>
 		<section class="personalInput">
+			<div><label>Date</label><input type="date" v-model="newExpense.date"/></div>
 			<div><label>Trinity Paid for Herself</label><input type="number"  v-model="newExpense.trinity_paid_for_herself"/></div>
 			<div><label>Neo Paid for Himself</label><input type="number"  v-model="newExpense.neo_paid_for_himself" /></div>
 		</section>
 
 		<h2>Currency</h2>
-		<select id="currency">
-			<option value="USD" selected>USD</option>
-			<option value="EUR">EUR</option>
-			<option value="GBP">GBP</option>
-		</select>
+		<div id="radio">
+			<input type="radio" name="currency" id="usd" value="USD" v-model="newExpense.currency">
+			<label for="usd">USD</label>
+			<input type="radio" name="currency" id="eur" value="EUR" v-model="newExpense.currency">
+			<label for="eur">EUR</label>
+			<input type="radio" name="currency" id="GBP" value="GBP" v-model="newExpense.currency">
+			<label for="gbp">GBP</label>
+		</div>
 
 		
 		<div id="addsavebuttons">

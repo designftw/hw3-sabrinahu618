@@ -3,7 +3,7 @@ import { createApp } from "https://mavue.mavo.io/mavue.js";
 globalThis.app = createApp({
 	data: {
 		expenses: [],
-		newExpense: {},
+		newExpense: {currency: "USD",},
 		window: window,
 	},
 
@@ -25,12 +25,22 @@ globalThis.app = createApp({
 				GBP: 0.85
 			};
 
-			return amount * rates[to] / rates[from];
+			return (amount * rates[to] / rates[from]).toFixed(2);
 		},
 
 		addExpense() {
-			this.expenses.unshift(this.newExpense);
+			const newExpenseCopy = {...this.newExpense};
+			if (newExpenseCopy.currency !== "USD") {
+				newExpenseCopy.neo_paid = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.neo_paid);
+				newExpenseCopy.trinity_paid = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.trinity_paid);
+				newExpenseCopy.neo_paid_for_trinity = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.neo_paid_for_trinity);
+				newExpenseCopy.trinity_paid_for_neo = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.trinity_paid_for_neo);
+				newExpenseCopy.neo_paid_for_himself = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.neo_paid_for_himself);
+				newExpenseCopy.trinity_paid_for_herself = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.trinity_paid_for_herself);
+			}
+			this.expenses.unshift(newExpenseCopy);
 			this.newExpense = {};
+
 		},
 
 		deleteExpense(expense) {
