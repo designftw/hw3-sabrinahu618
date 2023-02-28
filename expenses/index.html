@@ -1,24 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Expenses</title>
 	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="app">
-	<!-- Replace hw3-starter below with your repo name (hw3-yourusername) so you can save!  -->
-	<ma-data v-model="expenses" src="https://github.com/designftw/hw3-starter/expenses/data.json"></ma-data>
+	<div id="app">
+		<!-- Replace hw3-starter below with your repo name (hw3-yourusername) so you can save!  -->
+		<ma-data v-model="expenses"
+			src="https://github.com/designftw/hw3-sabrinahu618/blob/master/expenses/data.json"></ma-data>
 
-	<!-- App UI here -->
+		<!-- App UI here -->
+		<div v-if="expenses.user">
+			Logged in as {{ expenses.user?.username }}
+			<button @click="expenses.logout()">Logout</button>
+		</div>
+		<button v-else @click="expenses.login()">Login</button>
 
-	<!-- Delete this line when you write your actual UI -->
-	{{ expenses.length }} expenses loaded.
-</div>
+		<div id="owes" v-if="total_balance < 0">
+			<h1> Trinity owes Neo: ${{ total_balance*-1 }} </h1>
+		</div>
+		<div id="owes" v-if="total_balance > 0">
+			<h1> Neo owes Trinity: ${{ total_balance }} </h1>
+		</div>
+		<h2>New Expense Input</h2>
+		<section class="expenseInput">
+			<!-- <div><label>Date</label><input type="date" v-model="newExpense.date"/></div>
+			<div><label>Title</label><input type="text" v-model="newExpense.title" /></div>
+			<div><label>Trinity Paid (Joint)</label><input type="number" v-model="newExpense.trinity_paid" /></div>
+			<div><label>Neo Paid (Joint)</label><input type="number" v-model="newExpense.neo_paid" /></div>
+			<div><label>Trinity Paid for Neo</label><input type="number" v-model="newExpense.trinity_paid_for_neo" />
+			</div>
+			<div><label>Neo Paid for Trinity</label><input type="number" v-model="newExpense.neo_paid_for_trinity" />
+			</div>
+			<div><label>Trinity Paid for Herself</label><input type="number"  v-model="newExpense.trinity_paid_for_herself"/></div>
+			<div><label>Neo Paid for Himself</label><input type="number"  v-model="newExpense.neo_paid_for_himself" /></div> -->
+			<table>
+				<thead>
+					<tr>
+						<td>Date</td>
+						<td>Title</td>
+						<td>Trinity Paid</td>
+						<td>Neo Paid</td>
+						<td>Trinity Paid For Neo</td>
+						<td>Neo Paid For Trinity</td>
+						<td>Trinity Paid For Herself</td>
+						<td>Neo Paid For Himself</td>
+					</tr>
+				</thead>
+	
+				<tbody>
+						<td> <input type="date" v-model="newExpense.date" /> </td>
+						<td> <input type="text" v-model="newExpense.title" /> </td>
+						<td> <input type="number" v-model="newExpense.trinity_paid" /> </td>
+						<td> <input type="number" v-model="newExpense.neo_paid" /> </td>
+						<td> <input type="number" v-model="newExpense.trinity_paid_for_neo" /> </td>
+						<td> <input type="number" v-model="newExpense.neo_paid_for_trinity" /> </td>
+						<td> <input type="number" v-model="newExpense.trinity_paid_for_herself" /> </td>
+						<td> <input type="number" v-model="newExpense.neo_paid_for_himself" /> </td>
+						<td class="deleteButton"><button @click="deleteExpense(expense)">X</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
 
-<script src="index.js" type="module"></script>
+		
+		<div id="addsavebuttons">
+			<button @click="addExpense()">Add Expense</button> <button @click="expenses.save()">Save</button>
+		</div>
+		
+		<h2>Expense History</h2>
+		<table>
+			<thead>
+				<tr>
+					<td>Date</td>
+					<td>Title</td>
+					<td>Trinity Paid</td>
+					<td>Neo Paid</td>
+					<td>Trinity Paid For Neo</td>
+					<td>Neo Paid For Trinity</td>
+					<td>Trinity Paid For Herself</td>
+					<td>Neo Paid For Himself</td>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr v-for="expense in expenses">
+					<td> <input type="date" v-model="expense.date" /> </td>
+					<td> <input type="text" v-model="expense.title" /> </td>
+					<td> <input type="number" v-model="expense.trinity_paid" /> </td>
+					<td> <input type="number" v-model="expense.neo_paid" /> </td>
+					<td> <input type="number" v-model="expense.trinity_paid_for_neo" /> </td>
+					<td> <input type="number" v-model="expense.neo_paid_for_trinity" /> </td>
+					<td> <input type="number" v-model="expense.trinity_paid_for_herself" /> </td>
+					<td> <input type="number" v-model="expense.neo_paid_for_himself" /> </td>
+					<td class="deleteButton"><button @click="deleteExpense(expense)">X</button></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<button id="scroll" @click="window.scroll(0, 0)">Scroll to Top</button>
+
+	</div>
+
+
+
+
+	<script src="index.js" type="module"></script>
 
 </body>
+
 </html>

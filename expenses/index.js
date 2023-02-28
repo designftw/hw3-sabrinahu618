@@ -2,7 +2,9 @@ import { createApp } from "https://mavue.mavo.io/mavue.js";
 
 globalThis.app = createApp({
 	data: {
-		expenses: []
+		expenses: [],
+		newExpense: {},
+		window: window,
 	},
 
 	methods: {
@@ -24,7 +26,16 @@ globalThis.app = createApp({
 			};
 
 			return amount * rates[to] / rates[from];
-		}
+		},
+
+		addExpense() {
+			this.expenses.unshift(this.newExpense);
+			this.newExpense = {};
+		},
+
+		deleteExpense(expense) {
+			this.expenses.splice(this.expenses.indexOf(expense), 1);
+		},
 	},
 
 	computed: {
