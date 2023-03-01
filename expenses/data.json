@@ -1,5 +1,22 @@
 [
 	{
+		"currency": "EUR",
+		"date": "2023-03-17",
+		"title": "hairbrush",
+		"neo_paid": "8.08",
+		"trinity_paid": "",
+		"neo_paid_for_trinity": "",
+		"trinity_paid_for_neo": "",
+		"neo_paid_for_himself": "",
+		"trinity_paid_for_herself": ""
+	},
+	{
+		"currency": "USD",
+		"date": "2023-03-17",
+		"trinity_paid_for_herself": 984,
+		"title": "macbook"
+	},
+	{
 		"currency": "USD",
 		"title": "toothbrush",
 		"trinity_paid_for_neo": 100,
