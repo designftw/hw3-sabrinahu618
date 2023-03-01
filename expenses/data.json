@@ -1,5 +1,11 @@
 [
 	{
+		"currency": "USD",
+		"title": "toothbrush",
+		"trinity_paid_for_neo": 100,
+		"date": "2023-03-14"
+	},
+	{
 		"title": "Rent, Sept 2020",
 		"trinity_paid": 3553
 	},
