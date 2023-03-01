@@ -14,12 +14,13 @@
 				overflow: hidden;
 			}
 		</li>
-		<li>Safety: By removing the horizontal bar, I improved the Safety 
-			dimension of the website. The horizontal bar was not adding anything 
+		<li>Safety: Removing the horizontal bar prevents errors and reduces the chances of a slip
+			in execution. The horizontal bar was not adding anything 
 			functionally to the website and it makes users confused on why it is 
 			even there. By using the trackpad to try and scroll left and right, it 
 			can accidentally activate the back button. This unintentionally takes the 
 			user back to the previous page, which can make them lose their place or progress.
+		
 		</li>
 		<li>Before: <br> <img src="images/paper source before.png" width="450" height="250"></li>
 		<li>After: <br> <img src="images/paper source after.png" width="450" height="250"></li>
@@ -27,13 +28,18 @@
 
 	<h2>Learnability: Indicating a Box is Clickable</h2>
 	<ul>
-		<li> Website: https://designftw.mit.edu/assignments/hw3/#ex2</li>
+		<li> Website: https://www.papersource.com/</li>
 		<li>CSS code:
 			a:hover {
 				transform: scale(0.98);
 			}
 		</li>
-		<li>Learnability: 
+		<li>Learnability: The transformation of the box when hovered over acts as a signifier that
+			the box is clickable. By using this feature,
+			I increased interaction and discoverability so that
+			the user knows the box is clickable the first time.
+			The user would initially only think
+			to click on the SHOP NOW link in the box, but now the SHOP NOW link could be removed from the box.
 		</li>
 		<li>Before: <br> <img src="images/without hover.png" width="450" height="250"></li>
 		<li>After: <br> <video width="450" height="250" controls>
@@ -41,6 +47,24 @@
 		  </video>
 		</li>
 	</ul>
+	
+	<h2>Efficiency: Removing an Extra Click to Quick Links</h2>
+	<ul>
+		<li> Website: https://www.art.yale.edu/</li>
+		<li>CSS code:
+			element.style {
+				empty-cells: hide;
+			}
+		</li>
+		<li>Efficiency: I removed the extra click to view all the Quick Links by hiding 
+			the +/- symbol that opens and closes the box. Quick Links should be quick. 
+			By directly displaying all of the links and limiting the mechanical steps needed,
+			I improved the efficiency of the website.
+		</li>
+		<li>Before: <br> <img src="images/yale before.png" width="450" height="250"></li>
+		<li>After: <br> <img src="images/yale after.png" width="450" height="250"></li>
+	</ul>
+
 	
 </head>
 <body>
