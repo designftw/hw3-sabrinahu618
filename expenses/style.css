@@ -129,6 +129,6 @@ button:hover {
 #radio {
     display: flex;
     flex-direction: row;
-    font-size: 16pt;
+    font-size: 14pt;
     gap: 0.1em;
 }

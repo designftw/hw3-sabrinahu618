@@ -3,7 +3,7 @@ import { createApp } from "https://mavue.mavo.io/mavue.js";
 globalThis.app = createApp({
 	data: {
 		expenses: [],
-		newExpense: {currency: "USD",},
+		newExpense: {currency: "USD"},
 		window: window,
 	},
 
@@ -29,23 +29,23 @@ globalThis.app = createApp({
 		},
 
 		addExpense() {
-			const newExpenseCopy = {...this.newExpense};
-			if (newExpenseCopy.currency !== "USD") {
-				newExpenseCopy.neo_paid = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.neo_paid);
-				newExpenseCopy.trinity_paid = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.trinity_paid);
-				newExpenseCopy.neo_paid_for_trinity = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.neo_paid_for_trinity);
-				newExpenseCopy.trinity_paid_for_neo = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.trinity_paid_for_neo);
-				newExpenseCopy.neo_paid_for_himself = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.neo_paid_for_himself);
-				newExpenseCopy.trinity_paid_for_herself = this.currencyConvert(newExpenseCopy.currency, "USD", newExpenseCopy.trinity_paid_for_herself);
+			if (this.newExpense.currency !== "USD") {
+				this.newExpense.neo_paid = this.convert_to_USD(this.newExpense.currency, this.newExpense.neo_paid);
+				this.newExpense.trinity_paid = this.convert_to_USD(this.newExpense.currency, this.newExpense.trinity_paid);
+				this.newExpense.neo_paid_for_trinity = this.convert_to_USD(this.newExpense.currency, this.newExpense.neo_paid_for_trinity);
+				this.newExpense.trinity_paid_for_neo = this.convert_to_USD(this.newExpense.currency, this.newExpense.trinity_paid_for_neo);
+				this.newExpense.neo_paid_for_himself = this.convert_to_USD(this.newExpense.currency, this.newExpense.neo_paid_for_himself);
+				this.newExpense.trinity_paid_for_herself = this.convert_to_USD(this.newExpense.currency, this.newExpense.trinity_paid_for_herself);
 			}
-			this.expenses.unshift(newExpenseCopy);
-			this.newExpense = {};
-
-		},
-
+			this.expenses.unshift(this.newExpense);
+			this.newExpense = {currency: "USD"};
+			 },
 		deleteExpense(expense) {
 			this.expenses.splice(this.expenses.indexOf(expense), 1);
 		},
+		convert_to_USD(currency, expense_field) {
+			return this.currencyConvert(currency, "USD", expense_field) == "NaN" ? '' : this.currencyConvert(currency, "USD", expense_field);
+		}
 	},
 
 	computed: {
@@ -61,7 +61,7 @@ globalThis.app = createApp({
 				total += (trinity_paid - neo_paid)/2 + trinity_paid_for_neo - neo_paid_for_trinity;
 			}
 
-			return total;
+			return (total).toFixed(2);
 		}
 	}
 }, "#app");
