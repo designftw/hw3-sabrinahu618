@@ -1,5 +1,12 @@
 [
 	{
+		"currency": "USD",
+		"date": "2023-03-02",
+		"trinity_paid": 500,
+		"neo_paid": 500,
+		"title": "split bill"
+	},
+	{
 		"currency": "EUR",
 		"date": "2023-03-17",
 		"title": "hairbrush",
