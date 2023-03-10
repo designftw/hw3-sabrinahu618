@@ -1,10 +1,16 @@
 [
 	{
 		"currency": "USD",
-		"date": "2023-03-02",
-		"trinity_paid": 100,
-		"neo_paid": 500,
-		"title": "split bill"
+		"neo_paid_for_himself": 10
+	},
+	{
+		"currency": "EUR",
+		"trinity_paid_for_herself": "10.10",
+		"neo_paid": "",
+		"trinity_paid": "",
+		"neo_paid_for_trinity": "",
+		"trinity_paid_for_neo": "",
+		"neo_paid_for_himself": ""
 	},
 	{
 		"currency": "EUR",
