@@ -1,5 +1,8 @@
 [
 	{
+		"currency": "USD"
+	},
+	{
 		"currency": "USD",
 		"neo_paid_for_himself": 10
 	},
