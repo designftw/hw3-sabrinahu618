@@ -1,12 +1,5 @@
 [
 	{
-		"currency": "USD"
-	},
-	{
-		"currency": "USD",
-		"neo_paid_for_himself": 10
-	},
-	{
 		"currency": "EUR",
 		"trinity_paid_for_herself": "10.10",
 		"neo_paid": "",
